@@ -18,7 +18,7 @@ export const getVideos = () => (dispatch) => {
 // ADD VIDEO
 export const addVideo = (video) => (dispatch) => {
   axios
-    .post(`/api/videos/`, video)
+    .post(`watching/api/videos/`, video)
     .then((res) => {
       dispatch({
         type: ADD_VIDEO,
