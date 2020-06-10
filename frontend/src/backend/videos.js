@@ -1,0 +1,12 @@
+export const VIDEO_TYPE_CHOICES = {
+  VIDEO_TYPE_ANIME: "Anime",
+  VIDEO_TYPE_MOVIE: "Movie",
+  VIDEO_TYPE_SERIAL: "Serial",
+};
+
+export const VIDEO_STATUS_CHOICES = {
+  VIDEO_STATUS_FINISHED: "Finished",
+  VIDEO_STATUS_ON_HOLD: "On Hold",
+  VIDEO_STATUS_NOT_WATCHING: "Not Watching",
+  VIDEO_STATUS_AIRING: "Airing",
+};

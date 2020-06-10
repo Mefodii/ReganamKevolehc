@@ -22,12 +22,12 @@ export class Header extends Component {
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Serials
+                Movies
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">
-                Movies
+                Serials
               </a>
             </li>
             <li className="nav-item">
