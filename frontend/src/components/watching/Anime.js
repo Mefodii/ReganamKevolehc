@@ -2,40 +2,40 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getVideos, deleteVideo } from "../../actions/videos";
-import { GET_MOVIES } from "../../actions/types";
+import { GET_ANIME } from "../../actions/types";
 
-export class Movies extends Component {
+export class Anime extends Component {
   static propTypes = {
-    movies: PropTypes.array.isRequired,
+    anime: PropTypes.array.isRequired,
     getVideos: PropTypes.func.isRequired,
     deleteVideo: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    this.props.getVideos(GET_MOVIES);
+    this.props.getVideos(GET_ANIME);
   }
 
   render() {
     return (
       <Fragment>
-        <h2>Movies</h2>
+        <h2>Anime</h2>
         <table className="table table-striped">
           <thead>
             <tr>
               <th>Name</th>
-              <th>Aliases</th>
-              <th>Year</th>
-              <th>Status</th>
+              <th>Type</th>
+              <th>Watching Status</th>
+              <th>Related To</th>
               <th />
             </tr>
           </thead>
           <tbody>
-            {this.props.movies.map((video) => (
+            {this.props.anime.map((video) => (
               <tr key={video.id}>
                 <td>{video.name}</td>
-                <td>{video.alias}</td>
-                <td>{video.year}</td>
+                <td>{video.type}</td>
                 <td>{video.status}</td>
+                <td>{video.parent_video}</td>
                 <td>
                   <button
                     onClick={this.props.deleteVideo.bind(this, video.id)}
@@ -54,7 +54,7 @@ export class Movies extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  movies: state.videos.movies,
+  anime: state.videos.anime,
 });
 
-export default connect(mapStateToProps, { getVideos, deleteVideo })(Movies);
+export default connect(mapStateToProps, { getVideos, deleteVideo })(Anime);

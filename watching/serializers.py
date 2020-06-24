@@ -16,9 +16,16 @@ class SeasonSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class VideoSerializer(serializers.ModelSerializer):
+class VideoRecursiveSerializer(serializers.ModelSerializer):
     side_story = RecursiveField(many=True)
     season = SeasonSerializer(many=True)
+
+    class Meta:
+        model = Video
+        fields = '__all__'
+
+
+class VideoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Video

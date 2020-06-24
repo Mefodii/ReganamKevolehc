@@ -1,11 +1,15 @@
+from django.urls import path
+
 from rest_framework import routers
-from .api import VideoViewSet, SeasonViewSet, MovieViewSet, AnimeViewSet, SerialViewSet
+from .api import VideoViewSet, SeasonViewSet, VideoList
 
 router = routers.DefaultRouter()
 router.register("api/videos", VideoViewSet, "videos")
-router.register("api/movies", MovieViewSet, "movies")
-router.register("api/anime", AnimeViewSet, "anime")
-router.register("api/serials", SerialViewSet, "serials")
 router.register("api/seasons", SeasonViewSet, "seasons")
 
-urlpatterns = router.urls
+urlpatterns = [
+    path("api/video_type/<video_type>/", VideoList.as_view()),
+    path("api/video_type/", VideoList.as_view()),
+]
+
+urlpatterns += router.urls

@@ -27,6 +27,14 @@ VIDEO_STATUS_CHOICES = (
 
 
 class VideoQuerySet(models.QuerySet):
+    def filter_by_type(self, video_type):
+        if video_type is None:
+            return self.filter(Q(parent_video=None))
+
+        return self.filter(
+            Q(type=video_type) & Q(parent_video=None)
+        )
+
     def movies(self):
         return self.filter(
             Q(type=VIDEO_TYPE_MOVIE) & Q(parent_video=None)

@@ -76,20 +76,22 @@ export class VideoForm extends Component {
             <div className="row">
               <legend className="col-form-label col-sm-2 pt-0">Type</legend>
               <div className="col-sm-10">
-                {Object.entries(VIDEO_TYPE_CHOICES).map(([key, video_type]) => (
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="type"
-                      value={video_type}
-                      onChange={this.onChange}
-                    />
-                    <label className="form-check-label" for="gridRadios1">
-                      {video_type}
-                    </label>
-                  </div>
-                ))}
+                {Object.entries(VIDEO_TYPE_CHOICES).map(
+                  ([video_key, video_type]) => (
+                    <div className="form-check" key={video_key}>
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        name="type"
+                        value={video_type}
+                        onChange={this.onChange}
+                      />
+                      <label className="form-check-label" htmlFor="gridRadios1">
+                        {video_type}
+                      </label>
+                    </div>
+                  )
+                )}
               </div>
             </div>
           </fieldset>
@@ -98,8 +100,8 @@ export class VideoForm extends Component {
               <legend className="col-form-label col-sm-2 pt-0">Status</legend>
               <div className="col-sm-10">
                 {Object.entries(VIDEO_STATUS_CHOICES).map(
-                  ([key, status_type]) => (
-                    <div className="form-check">
+                  ([status_key, status_type]) => (
+                    <div className="form-check" key={status_key}>
                       <input
                         className="form-check-input"
                         type="radio"
@@ -107,7 +109,7 @@ export class VideoForm extends Component {
                         value={status_type}
                         onChange={this.onChange}
                       />
-                      <label className="form-check-label" for="gridRadios1">
+                      <label className="form-check-label" htmlFor="gridRadios1">
                         {status_type}
                       </label>
                     </div>

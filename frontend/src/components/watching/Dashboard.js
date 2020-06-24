@@ -1,15 +1,17 @@
 import React, { Fragment } from "react";
 
-import Videos from "./Videos";
 import Movies from "./Movies";
-import { VideoForm } from "./Form";
+import Serials from "./Serials";
+import Anime from "./Anime";
+import VideoForm from "./Form";
 
 export default function Dashboard() {
   return (
     <Fragment>
       <VideoForm />
-      <Videos />
       <Movies />
+      <Serials />
+      <Anime />
     </Fragment>
   );
 }
