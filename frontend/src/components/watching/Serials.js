@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getVideos, deleteVideo } from "../../actions/videos";
 import { GET_SERIALS } from "../../actions/types";
+import { VIDEO_STATUS_CHOICES } from "../../backend/videos";
 
 export class Serials extends Component {
   static propTypes = {
@@ -15,6 +16,10 @@ export class Serials extends Component {
     this.props.getVideos(GET_SERIALS);
   }
 
+  onChangeStatus = (video, new_status) => {
+    console.log(video, new_status);
+  };
+
   render() {
     return (
       <Fragment>
@@ -23,9 +28,10 @@ export class Serials extends Component {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Type</th>
-              <th>Watching Status</th>
-              <th>Related To</th>
+              <th>Aliases</th>
+              <th>Status</th>
+              <th>Seasons</th>
+              <th>Check Date</th>
               <th />
             </tr>
           </thead>
@@ -33,10 +39,44 @@ export class Serials extends Component {
             {this.props.serials.map((video) => (
               <tr key={video.id}>
                 <td>{video.name}</td>
-                <td>{video.type}</td>
-                <td>{video.status}</td>
-                <td>{video.parent_video}</td>
+                <td>{video.alias}</td>
                 <td>
+                  <div className="dropdown">
+                    <button
+                      className="btn dropdown-toggle"
+                      type="button"
+                      id="dropDownStatus"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {video.status}
+                    </button>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropDownStatus"
+                    >
+                      {Object.entries(VIDEO_STATUS_CHOICES).map(
+                        ([status_key, status_type]) => (
+                          <a
+                            className="dropdown-item"
+                            onClick={this.onChangeStatus.bind(this, video, {
+                              status_key,
+                            })}
+                            key={status_key}
+                          >
+                            {status_type}
+                          </a>
+                        )
+                      )}
+                    </div>
+                  </div>
+                </td>
+                <td />
+                <td>{video.check_date}</td>
+                <td>
+                  <button className="btn btn-success btn-sm">Update</button>
+                  <br />
                   <button
                     onClick={this.props.deleteVideo.bind(this, video.id)}
                     className="btn btn-danger btn-sm"

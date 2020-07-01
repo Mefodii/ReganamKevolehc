@@ -60,6 +60,7 @@ class Video(models.Model):
     status = models.CharField(max_length=50, choices=VIDEO_STATUS_CHOICES, default=VIDEO_STATUS_FINISHED)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+    check_date = models.DateTimeField(blank=True, null=True)
     parent_video = models.ForeignKey("self", on_delete=models.CASCADE, null=True, related_name="side_story")
 
     objects = VideoQuerySet.as_manager()
