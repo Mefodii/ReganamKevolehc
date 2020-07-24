@@ -25,34 +25,6 @@ export class Serials extends Component {
     return (
       <Fragment>
         <h2>Serials</h2>
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <div className="media">
-                <img
-                  src="static/frontend/icons/image-placeholder.png"
-                  alt="Image Placeholder"
-                  className="mr-3 shadow-sm mb-5 rounded"
-                  height="130"
-                />
-                <div className="media-mody">
-                  <h5 className="mt-0">Name of the Serial</h5>
-                  <p>
-                    Alias 1<br />
-                    Alias 2 <br /> Alias 3
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm">Component placeholder for SEASONS!!!!</div>
-            <div class="col-sm">
-              <div>Component placeholder for CHECKDATE!!</div>
-              <div className="sticky-bottom" valign="bottom">
-                Component placeholder for STATUS RADIO BUTTONS!!
-              </div>
-            </div>
-          </div>
-        </div>
         <table className="table table-striped">
           <thead>
             <tr>

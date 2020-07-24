@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getVideos, deleteVideo } from "../../actions/videos";
 import { GET_ANIME } from "../../actions/types";
+import AnimeItem from "./AnimeItem";
 
 export class Anime extends Component {
   static propTypes = {
@@ -16,9 +17,15 @@ export class Anime extends Component {
   }
 
   render() {
+    const animeItems = this.props.anime.length
+      ? this.props.anime.map((video) => {
+          return <AnimeItem video={video} key={video.id}></AnimeItem>;
+        })
+      : null;
     return (
       <Fragment>
         <h2>Anime</h2>
+        {animeItems}
         <table className="table table-striped">
           <thead>
             <tr>
