@@ -24,7 +24,9 @@ export class Anime extends Component {
       : null;
     return (
       <Fragment>
-        <h2>Anime</h2>
+        <br />
+        <h2>Welcome to Anime, fellow watcher</h2>
+        <br />
         {animeItems}
         <table className="table table-striped">
           <thead>

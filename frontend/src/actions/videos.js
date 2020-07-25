@@ -13,7 +13,7 @@ import { VIDEO_TYPE_CHOICES } from "../backend/videos";
 
 // GET VIDEOS
 export const getVideos = (video_type = GET_VIDEOS) => (dispatch) => {
-  var url = "watching/api/video_type/";
+  var url = window.location.origin + "/watching/api/video_type/";
   switch (video_type) {
     case GET_SERIALS:
       url += VIDEO_TYPE_CHOICES.VIDEO_TYPE_SERIAL + "/";
