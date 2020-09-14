@@ -6,3 +6,4 @@
 /.idea/misc.xml
 /.idea/inspectionProfiles/profiles_settings.xml
 /.vscode/settings.json
+*__pycache__*
