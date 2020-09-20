@@ -1,12 +1,16 @@
 import React, { Component } from "react";
+import { VIDEO_STATUS_CHOICES } from "../../../backend/videos";
 
 export class Info extends Component {
   render() {
+    console.log(Object.values(VIDEO_STATUS_CHOICES));
     return (
-      <div className="col-sm">
+      <div>
         <div>Component placeholder for CHECKDATE!!</div>
         <div className="sticky-bottom" valign="bottom">
-          Component placeholder for STATUS RADIO BUTTONS!!
+          {Object.values(VIDEO_STATUS_CHOICES).map((status) => (
+            <span>{status}</span>
+          ))}
         </div>
       </div>
     );

@@ -17,8 +17,10 @@ export class AnimeItem extends Component {
               <Title name={name} alias={alias}></Title>
             </div>
           </div>
-          <Seasons></Seasons>
-          <Info></Info>
+          <div className="col-sm">
+            <Seasons></Seasons>
+            <Info></Info>
+          </div>
         </div>
       </div>
     );

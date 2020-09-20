@@ -37,8 +37,8 @@ class App extends Component {
                   component={Serials}
                 ></Route>
                 <Route exact path="/watchio/anime" component={Anime}></Route>
-                <Route path="/gamio" component={GamioDashboard}></Route>
-                <Route path="/readio" component={ReadioDashboard}></Route>
+                <Route exact path="/gamio" component={GamioDashboard}></Route>
+                <Route exact path="/readio" component={ReadioDashboard}></Route>
               </Switch>
             </div>
           </Fragment>
