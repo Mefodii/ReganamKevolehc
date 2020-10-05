@@ -6,7 +6,7 @@ export const VIDEO_TYPE_CHOICES = {
 
 export const VIDEO_STATUS_CHOICES = {
   VIDEO_STATUS_FINISHED: "Finished",
-  VIDEO_STATUS_ON_HOLD: "On Hold",
-  VIDEO_STATUS_NOT_WATCHING: "Not Watching",
-  VIDEO_STATUS_AIRING: "Airing",
+  VIDEO_STATUS_WATCHING: "Watching",
+  VIDEO_STATUS_WILL_WATCH: "Will Watch",
+  VIDEO_STATUS_UNINTERESTED: "Uninterested",
 };

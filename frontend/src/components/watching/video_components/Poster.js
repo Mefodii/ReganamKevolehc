@@ -4,6 +4,7 @@ export class Poster extends Component {
   render() {
     const imgPath =
       window.location.origin + "/static/frontend/icons/image-placeholder.png";
+    console.log(window.location.origin);
     return (
       <img
         src={imgPath}
