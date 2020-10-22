@@ -22,13 +22,3 @@ body {
   display: inline;
   z-index: -1;
 }
-
-#site-header ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: left;
-}
-
-#site-header ul > * {
-  border: solid 1px;
-}
