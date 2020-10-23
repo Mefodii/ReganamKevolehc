@@ -7,14 +7,16 @@ export class Header extends Component {
     bg: "bg-gray-100",
   };
 
-  changeBackground = (e) => {
-    if (this.state.showDropDown) {
-      this.state.bg = "bg-gray-100";
-    } else {
-      this.state.bg = "bg-gray-700";
-    }
-    // e.target.style.background = this.state.bg;
-    this.state.showDropDown = !this.state.showDropDown;
+  showDropDown = (e) => {
+    this.setState({ showDropDown: true });
+  };
+
+  hideDropDown = (e) => {
+    this.setState({ showDropDown: false });
+  };
+
+  getWatchioClass = () => {
+    return this.state.bg;
   };
 
   render() {
@@ -24,11 +26,15 @@ export class Header extends Component {
           <li className="mr-5 text-lg font-bold">
             <NavLink to="/">:Kevolehc:</NavLink>
           </li>
-          <li className="relative mr-5 border">
-            <div onMouseEnter={this.changeBackground} className={this.state.bg}>
+          <li
+            className="relative mr-5"
+            onMouseEnter={this.showDropDown}
+            onMouseLeave={this.hideDropDown}
+          >
+            <div>
               <NavLink to="/watchio">WatchIO</NavLink>
               <svg
-                className="w-5 inline transform hover:rotate-180 opacity-75 scale-75"
+                className="w-5 inline transform hover:-rotate-180 transition ease-in duration-100 opacity-75 scale-75"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -42,7 +48,10 @@ export class Header extends Component {
                 ></path>
               </svg>
             </div>
-            <div id="drop-down" className="">
+            <div
+              id="drop-down"
+              className={`${this.state.showDropDown ? "" : "hidden"}`}
+            >
               <ul>
                 <li>
                   <NavLink to="/watchio/movies">Movies</NavLink>
