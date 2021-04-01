@@ -1,5 +1,5 @@
 {
-  "name": "DjangoApp",
+  "name": "ReganamKevolehc",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,23 +10,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mefodii/DjangoApp.git"
+    "url": "git+https://github.com/Mefodii/ReganamKevolehc.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Mefodii/DjangoApp/issues"
+    "url": "https://github.com/Mefodii/ReganamKevolehc/issues"
   },
-  "homepage": "https://github.com/Mefodii/DjangoApp#readme",
+  "homepage": "https://github.com/Mefodii/ReganamKevolehc#readme",
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
+    "@tailwindcss/postcss7-compat": "^2.0.4",
+    "autoprefixer": "^9.8.6",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "webpack": "^5.28.0",
-    "webpack-cli": "^4.6.0"
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -37,7 +41,6 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.3.0",
-    "tailwindcss": "^2.0.4"
+    "redux-thunk": "^2.3.0"
   }
 }
