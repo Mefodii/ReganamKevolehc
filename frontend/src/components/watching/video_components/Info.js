@@ -8,8 +8,8 @@ export class Info extends Component {
       <div>
         <div>Component placeholder for CHECKDATE!!</div>
         <div className="sticky-bottom" valign="bottom">
-          {Object.values(VIDEO_STATUS_CHOICES).map((status) => (
-            <span>{status}</span>
+          {Object.values(VIDEO_STATUS_CHOICES).map((status, i) => (
+            <span key={i}>{status}</span>
           ))}
         </div>
       </div>
