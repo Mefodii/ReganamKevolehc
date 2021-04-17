@@ -1,3 +1,12 @@
-from django.shortcuts import render
+import json
+from django.http import JsonResponse
+from .models import VIDEO_STATUS_CHOICES, VIDEO_TYPE_CHOICES, ALIAS_SEPARATOR
 
-# Create your views here.
+
+def get_info(request):
+    info = {
+        "statusTypes": [choice[0] for choice in VIDEO_STATUS_CHOICES],
+        "videoTypes": dict((x.lower(), y) for x, y in VIDEO_TYPE_CHOICES),
+        "aliasSeparator": ALIAS_SEPARATOR,
+    }
+    return JsonResponse(info)
