@@ -27,7 +27,10 @@ export class Anime extends Component {
           <h2 className="text-xl uppercase font-bold m-4">
             Welcome to Anime, fellow watcher
           </h2>
-          <div className="bg-gray-800 rounded-xl shadow-lg w-10/12">
+          <div
+            className="rounded-xl shadow-lg w-10/12"
+            style={{ background: "#150017" }}
+          >
             {animeItems}
           </div>
         </div>
