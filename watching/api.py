@@ -1,6 +1,6 @@
-from .models import Video, Season
+from .models import Video, Season, ImageModel
 from rest_framework import viewsets, permissions, generics
-from .serializers import VideoRecursiveSerializer, VideoSerializer, SeasonSerializer
+from .serializers import VideoRecursiveSerializer, VideoSerializer, SeasonSerializer, ImageModelSerializer
 
 
 class VideoViewSet(viewsets.ModelViewSet):
@@ -26,3 +26,11 @@ class SeasonViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = SeasonSerializer
+
+
+class ImageModelViewSet(viewsets.ModelViewSet):
+    queryset = ImageModel.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = ImageModelSerializer

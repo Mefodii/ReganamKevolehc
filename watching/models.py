@@ -7,10 +7,13 @@ VIDEO_TYPE_ANIME = "Anime"
 VIDEO_TYPE_MOVIE = "Movie"
 VIDEO_TYPE_SERIAL = "Serial"
 
-VIDEO_STATUS_FINISHED = "Finished"
+VIDEO_STATUS_DROPPED = "Dropped"
+VIDEO_STATUS_PLANNED = "Planned"
+VIDEO_STATUS_ON_HOLD = "On Hold"
 VIDEO_STATUS_WATCHING = "Watching"
-VIDEO_STATUS_WILL_WATCH = "Will Watch"
-VIDEO_STATUS_UNINTERESTED = "Uninterested"
+VIDEO_STATUS_FINISHED = "Finished"
+
+ALIAS_SEPARATOR = ">;<"
 
 VIDEO_TYPE_CHOICES = (
     (VIDEO_TYPE_ANIME, VIDEO_TYPE_ANIME),
@@ -19,10 +22,11 @@ VIDEO_TYPE_CHOICES = (
 )
 
 VIDEO_STATUS_CHOICES = (
-    (VIDEO_STATUS_FINISHED, VIDEO_STATUS_FINISHED),
+    (VIDEO_STATUS_DROPPED, VIDEO_STATUS_DROPPED),
+    (VIDEO_STATUS_PLANNED, VIDEO_STATUS_PLANNED),
+    (VIDEO_STATUS_ON_HOLD, VIDEO_STATUS_ON_HOLD),
     (VIDEO_STATUS_WATCHING, VIDEO_STATUS_WATCHING),
-    (VIDEO_STATUS_WILL_WATCH, VIDEO_STATUS_WILL_WATCH),
-    (VIDEO_STATUS_UNINTERESTED, VIDEO_STATUS_UNINTERESTED),
+    (VIDEO_STATUS_FINISHED, VIDEO_STATUS_FINISHED),
 )
 
 
@@ -70,10 +74,16 @@ class Video(models.Model):
 
 
 class Season(models.Model):
-    video = models.ForeignKey(Video, related_name="season", on_delete=models.CASCADE)
+    video = models.ForeignKey(Video, related_name="seasons", on_delete=models.CASCADE)
     rating = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(10)])
     season_number = models.IntegerField(default=1)
     episode_number = models.IntegerField(default=1)
     current_episode = models.IntegerField(default=0)
     watched = models.BooleanField(default=False)
     watched_at = models.DateField()
+
+
+class ImageModel(models.Model):
+    video = models.ForeignKey(Video, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="video/image/")
+

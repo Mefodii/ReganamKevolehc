@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Video, Season
+from .models import Video, Season, ImageModel
 
 
 class RecursiveField(serializers.ModelSerializer):
@@ -16,9 +16,17 @@ class SeasonSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ImageModelSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = ImageModel
+        fields = '__all__'
+
+
 class VideoRecursiveSerializer(serializers.ModelSerializer):
     side_story = RecursiveField(many=True)
-    season = SeasonSerializer(many=True)
+    seasons = SeasonSerializer(many=True)
+    images = ImageModelSerializer(many=True)
 
     class Meta:
         model = Video
