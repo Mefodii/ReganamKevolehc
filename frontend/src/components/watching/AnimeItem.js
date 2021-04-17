@@ -7,21 +7,15 @@ import Seasons from "./Seasons";
 
 export class AnimeItem extends Component {
   render() {
-    const { name, alias, id, status, year } = this.props.video;
+    const { name, alias, id, status, year, images, seasons } = this.props.video;
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-sm">
-            <div className="media">
-              <Poster></Poster>
-              <Title name={name} alias={alias}></Title>
-            </div>
-          </div>
-          <div className="col-sm">
-            <Seasons></Seasons>
-            <Info></Info>
-          </div>
+      <div className="anime-item flex m-5 p-2 border-2 border-gray-700 shadow-2xl rounded-xl">
+        <Poster images={images}></Poster>
+        <div className="anime-item-content w-full">
+          <Title name={name} alias={alias}></Title>
+          <Seasons></Seasons>
         </div>
+        <Info></Info>
       </div>
     );
   }

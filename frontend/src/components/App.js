@@ -22,7 +22,7 @@ class App extends Component {
         <Router>
           <Fragment>
             <Header />
-            <div className="container">
+            <div className="text-gray-200">
               <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route

@@ -4,7 +4,7 @@ import { NavLink, withRouter } from "react-router-dom";
 export class Header extends Component {
   state = {
     showDropDown: false,
-    bg: "bg-gray-100",
+    bg: "bg-gray-800",
   };
 
   showDropDown = (e) => {
@@ -15,19 +15,15 @@ export class Header extends Component {
     this.setState({ showDropDown: false });
   };
 
-  getWatchioClass = () => {
-    return this.state.bg;
-  };
-
   render() {
     return (
       <nav className="text-gray-200 shadow-md bg-gray-800" id="site-header">
-        <ul className="flex p-2">
-          <li className="text-lg font-bold m-2">
+        <ul className="flex p-2 items-center text-lg">
+          <li className="font-bold m-2">
             <NavLink to="/">:Kevolehc:</NavLink>
           </li>
           <li
-            className="relative m-2 group "
+            className="relative m-2 group"
             onMouseEnter={this.showDropDown}
             onMouseLeave={this.hideDropDown}
           >
@@ -40,33 +36,50 @@ export class Header extends Component {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1"
                 d="M19 9l-7 7-7-7"
               ></path>
             </svg>
             <div
               id="drop-down"
-              className={`${this.state.showDropDown ? "" : "hidden"}`}
+              className={`${this.state.showDropDown ? "" : "hidden"} ${
+                this.state.bg
+              } border border-gray-700 shadow-md`}
             >
               <ul>
-                <li>
-                  <NavLink to="/watchio/movies">Movies</NavLink>
+                <li className="p-2">
+                  <NavLink
+                    className="hover:underline hover:text-red-200"
+                    to="/watchio/movies"
+                  >
+                    Movies
+                  </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/watchio/serials">Serials</NavLink>
+                <li className="p-2">
+                  <NavLink
+                    className="hover:underline hover:text-red-200"
+                    to="/watchio/serials"
+                  >
+                    Serials
+                  </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/watchio/anime">Anime</NavLink>
+                <li className="p-2">
+                  <NavLink
+                    className="hover:underline hover:text-red-200"
+                    to="/watchio/anime"
+                  >
+                    Anime
+                  </NavLink>
                 </li>
               </ul>
             </div>
           </li>
-          <li className="m-2">
+          <li className="m-2 hover:underline hover:text-red-200">
             <NavLink to="/gamio">GameIO</NavLink>
           </li>
-          <li className="m-2">
+          <li className="m-2 hover:underline hover:text-red-200">
             <NavLink to="/readio">ReadIO</NavLink>
           </li>
         </ul>

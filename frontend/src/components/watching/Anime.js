@@ -1,19 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getVideos, deleteVideo } from "../../actions/videos";
-import { GET_ANIME } from "../../actions/types";
+import { getAnime, deleteVideo } from "../../actions/videos";
 import AnimeItem from "./AnimeItem";
 
 export class Anime extends Component {
   static propTypes = {
     anime: PropTypes.array.isRequired,
-    getVideos: PropTypes.func.isRequired,
+    getAnime: PropTypes.func.isRequired,
     deleteVideo: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    this.props.getVideos(GET_ANIME);
+    this.props.getAnime();
   }
 
   render() {
@@ -24,11 +23,13 @@ export class Anime extends Component {
       : null;
     return (
       <Fragment>
-        <div className="text-light">
-          <br />
-          <h2>Welcome to Anime, fellow watcher</h2>
-          <br />
-          {animeItems}
+        <div className="text-gray-100 w-full flex flex-col items-center">
+          <h2 className="text-xl uppercase font-bold m-4">
+            Welcome to Anime, fellow watcher
+          </h2>
+          <div className="bg-gray-800 rounded-xl shadow-lg w-10/12">
+            {animeItems}
+          </div>
         </div>
       </Fragment>
     );
@@ -39,4 +40,4 @@ const mapStateToProps = (state) => ({
   anime: state.videos.anime,
 });
 
-export default connect(mapStateToProps, { getVideos, deleteVideo })(Anime);
+export default connect(mapStateToProps, { getAnime, deleteVideo })(Anime);

@@ -1,17 +1,19 @@
 import React, { Component } from "react";
+import { DEFAULT_IMAGE } from "../../../util/constants";
 
 export class Poster extends Component {
   render() {
-    const imgPath =
-      window.location.origin + "/static/frontend/icons/image-placeholder.png";
-    console.log(window.location.origin);
+    const images = this.props.images;
+    var imgPath = images[0] ? images[0].image : DEFAULT_IMAGE;
+
     return (
-      <img
-        src={imgPath}
-        alt="Image Placeholder"
-        className="mr-3 shadow-sm mb-5 rounded"
-        height="130"
-      />
+      <div className="w-60">
+        <img
+          src={imgPath}
+          alt="Image Placeholder"
+          className="shadow-sm rounded-lg"
+        />
+      </div>
     );
   }
 }

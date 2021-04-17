@@ -5,51 +5,45 @@ import {
   GET_SERIALS,
   GET_MOVIES,
   GET_ANIME,
-  ADD_VIDEO,
   DELETE_VIDEO,
+  ADD_VIDEO,
+  GET_WATCHIO_INFO,
 } from "./types";
 
-import { VIDEO_TYPE_CHOICES } from "../backend/videos";
+import {
+  API_CRUD_VIDEO,
+  API_GET_VIDEOS,
+  API_GET_ANIME,
+  API_GET_MOVIES,
+  API_GET_SERIALS,
+  API_GET_WATCHIO_INFO,
+} from "../api/urls";
+import { defaultGet, defaultPost } from "./default";
 
-// GET VIDEOS
-export const getVideos = (video_type = GET_VIDEOS) => (dispatch) => {
-  var url = window.location.origin + "/watching/api/video_type/";
-  switch (video_type) {
-    case GET_SERIALS:
-      url += VIDEO_TYPE_CHOICES.VIDEO_TYPE_SERIAL + "/";
-      break;
-    case GET_MOVIES:
-      url += VIDEO_TYPE_CHOICES.VIDEO_TYPE_MOVIE + "/";
-      break;
-    case GET_ANIME:
-      url += VIDEO_TYPE_CHOICES.VIDEO_TYPE_ANIME + "/";
-      break;
-    default:
-      break;
-  }
+// GETs
+export const getVideos = () => (dispatch) => {
+  defaultGet(API_GET_VIDEOS, GET_VIDEOS)(dispatch);
+};
 
-  axios
-    .get(url)
-    .then((res) => {
-      dispatch({
-        type: video_type,
-        payload: res.data,
-      });
-    })
-    .catch((err) => console.log(err));
+export const getMovies = () => (dispatch) => {
+  defaultGet(API_GET_MOVIES, GET_MOVIES)(dispatch);
+};
+
+export const getAnime = () => (dispatch) => {
+  defaultGet(API_GET_ANIME, GET_ANIME)(dispatch);
+};
+
+export const getSerials = () => (dispatch) => {
+  defaultGet(API_GET_SERIALS, GET_SERIALS)(dispatch);
 };
 
 // ADD VIDEO
 export const addVideo = (video) => (dispatch) => {
-  axios
-    .post(`watching/api/videos/`, video)
-    .then((res) => {
-      dispatch({
-        type: ADD_VIDEO,
-        payload: res.data,
-      });
-    })
-    .catch((err) => console.log(err));
+  defaultPost(API_CRUD_VIDEO, ADD_VIDEO, video)(dispatch);
+};
+
+export const getInfo = () => (dispatch) => {
+  defaultGet(API_GET_WATCHIO_INFO, GET_WATCHIO_INFO)(dispatch);
 };
 
 // DELETE VIDEO

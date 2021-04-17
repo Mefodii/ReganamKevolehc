@@ -3,18 +3,29 @@ import {
   GET_MOVIES,
   GET_SERIALS,
   GET_ANIME,
+  GET_WATCHIO_INFO,
   ADD_VIDEO,
   DELETE_VIDEO,
 } from "../actions/types.js";
-
-import { VIDEO_TYPE_CHOICES } from "../backend/videos";
 
 const initialState = {
   videos: [],
   movies: [],
   serials: [],
   anime: [],
+  info: {
+    videoTypes: {},
+    statusTypes: [],
+    aliasSeparator: "",
+  },
 };
+
+const isAnime = (payload, state) =>
+  payload.type === state.info.videoTypes.anime;
+const isMovie = (payload, state) =>
+  payload.type === state.info.videoTypes.movie;
+const isSerial = (payload, state) =>
+  payload.type === state.info.videoTypes.serial;
 
 export default function (state = initialState, action) {
   switch (action.type) {
@@ -39,33 +50,33 @@ export default function (state = initialState, action) {
         anime: action.payload,
       };
     case ADD_VIDEO:
-      switch (action.payload.type) {
-        case VIDEO_TYPE_CHOICES.VIDEO_TYPE_ANIME:
-          return {
-            ...state,
-            anime: [...state.anime, action.payload],
-          };
-        case VIDEO_TYPE_CHOICES.VIDEO_TYPE_MOVIE:
-          return {
-            ...state,
-            movies: [...state.movies, action.payload],
-          };
-        case VIDEO_TYPE_CHOICES.VIDEO_TYPE_SERIAL:
-          return {
-            ...state,
-            serials: [...state.serials, action.payload],
-          };
-        default:
-          return {
-            ...state,
-          };
-      }
+      if (isAnime(action.payload, state))
+        return {
+          ...state,
+          anime: [...state.anime, action.payload],
+        };
+      if (isSerial(action.payload, state))
+        return {
+          ...state,
+          serials: [...state.serials, action.payload],
+        };
+      if (isMovie(action.payload, state))
+        return {
+          ...state,
+          movies: [...state.movies, action.payload],
+        };
+      return state;
     case DELETE_VIDEO:
       return {
         ...state,
         anime: state.anime.filter((video) => video.id !== action.payload),
         movies: state.movies.filter((video) => video.id !== action.payload),
         serials: state.serials.filter((video) => video.id !== action.payload),
+      };
+    case GET_WATCHIO_INFO:
+      return {
+        ...state,
+        info: action.payload,
       };
     default:
       return state;

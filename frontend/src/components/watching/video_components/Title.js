@@ -4,8 +4,8 @@ export class Title extends Component {
   render() {
     const { name, alias } = this.props;
     return (
-      <div className="media-mody">
-        <h5 className="mt-0">{name}</h5>
+      <div className="">
+        <h5 className="">{name}</h5>
         <p>
           Alias 1<br />
           Alias 2 <br /> Alias 3
