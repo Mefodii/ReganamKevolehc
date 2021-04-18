@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getSerials, deleteVideo } from "../../actions/videos";
+import { getSerials, deleteSerial } from "../../actions/videos";
 // import ImgPlaceholder from "static/frontend/icons/image-placeholder.png";
 
 export class Serials extends Component {
   static propTypes = {
     serials: PropTypes.array.isRequired,
     getSerials: PropTypes.func.isRequired,
-    deleteVideo: PropTypes.func.isRequired,
+    deleteSerial: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -78,7 +78,11 @@ export class Serials extends Component {
                     <button className="btn btn-success btn-sm">Update</button>
                     <br />
                     <button
-                      onClick={this.props.deleteVideo.bind(this, video.id)}
+                      onClick={this.props.deleteSerial.bind(
+                        this,
+                        video.id,
+                        video.type
+                      )}
                       className="btn btn-danger btn-sm"
                     >
                       Delete
@@ -99,4 +103,4 @@ const mapStateToProps = (state) => ({
   statusTypes: state.videos.info.statusTypes,
 });
 
-export default connect(mapStateToProps, { getSerials, deleteVideo })(Serials);
+export default connect(mapStateToProps, { getSerials, deleteSerial })(Serials);

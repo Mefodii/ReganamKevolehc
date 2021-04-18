@@ -1,14 +1,14 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getMovies, deleteVideo } from "../../actions/videos";
+import { getMovies, deleteMovie } from "../../actions/videos";
 import { GET_MOVIES } from "../../actions/types";
 
 export class Movies extends Component {
   static propTypes = {
     movies: PropTypes.array.isRequired,
     getMovies: PropTypes.func.isRequired,
-    deleteVideo: PropTypes.func.isRequired,
+    deleteMovie: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -41,7 +41,11 @@ export class Movies extends Component {
                   <td>{video.status}</td>
                   <td>
                     <button
-                      onClick={this.props.deleteVideo.bind(this, video.id)}
+                      onClick={this.props.deleteMovie.bind(
+                        this,
+                        video.id,
+                        video.type
+                      )}
                       className="btn btn-danger btn-sm"
                     >
                       Delete
@@ -61,4 +65,4 @@ const mapStateToProps = (state) => ({
   movies: state.videos.movies,
 });
 
-export default connect(mapStateToProps, { getMovies, deleteVideo })(Movies);
+export default connect(mapStateToProps, { getMovies, deleteMovie })(Movies);

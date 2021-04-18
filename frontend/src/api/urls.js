@@ -8,3 +8,6 @@ export const API_GET_ANIME = API_GET_VIDEOS + "Anime/";
 export const API_GET_SERIALS = API_GET_VIDEOS + "Serial/";
 export const API_CRUD_VIDEO = API_WATCHING + "videos/";
 export const API_GET_WATCHIO_INFO = API_WATCHING + "info/";
+
+// POSTERS API
+export const API_CRUD_POSTERS = API_WATCHING + "images/";

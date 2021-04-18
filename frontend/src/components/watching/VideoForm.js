@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addVideo } from "../../actions/videos";
+import { addAnime, addMovie, addSerial } from "../../actions/videos";
 
 export class VideoForm extends Component {
   state = {
@@ -13,7 +13,9 @@ export class VideoForm extends Component {
   };
 
   static propTypes = {
-    addVideo: PropTypes.func.isRequired,
+    addAnime: PropTypes.func.isRequired,
+    addMovie: PropTypes.func.isRequired,
+    addSerial: PropTypes.func.isRequired,
   };
 
   onChange = (e) => this.setState({ [e.target.name]: e.target.value });
@@ -23,7 +25,10 @@ export class VideoForm extends Component {
     const { name, alias, year, type, status } = this.state;
     const video = { name, alias, year, type, status };
     console.log(video);
-    this.props.addVideo(video);
+
+    if (type === this.props.videoTypes.anime) this.props.addAnime(video);
+    if (type === this.props.videoTypes.serial) this.props.addSerial(video);
+    if (type === this.props.videoTypes.movie) this.props.addMovie(video);
   };
 
   render() {
@@ -133,4 +138,6 @@ const mapStateToProps = (state) => ({
   statusTypes: state.videos.info.statusTypes,
 });
 
-export default connect(mapStateToProps, { addVideo })(VideoForm);
+export default connect(mapStateToProps, { addAnime, addMovie, addSerial })(
+  VideoForm
+);

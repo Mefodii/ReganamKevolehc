@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "webpack --mode development --watch ./frontend/src/index.js -o ./frontend/static/frontend/",
     "build-css": "tailwindcss build ./frontend/src/css/styles.css -o ./frontend/static/frontend/css/tailwind.css",
+    "btw": "tailwindcss build ./frontend/src/css/styles.css -o ./frontend/static/frontend/css/tailwind.css",
     "build": "webpack --mode production ./frontend/src/index.js -o ./frontend/static/frontend/main.js"
   },
   "repository": {

@@ -1,27 +1,46 @@
 import React, { Component } from "react";
 import Poster from "./video_components/Poster";
 import Info from "./video_components/Info";
-import Season from "./video_components/Season";
 import Title from "./video_components/Title";
 import Seasons from "./Seasons";
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
+import { addAnimePoster, deleteAnimePoster } from "../../actions/posters";
 
 export class AnimeItem extends Component {
+  static propTypes = {
+    video: PropTypes.object.isRequired,
+  };
+
+  state = {
+    name: "",
+    alias: "",
+    id: 0,
+    status: "",
+    year: "",
+    images: [],
+    seasons: [],
+  };
+
   render() {
     const { name, alias, id, status, year, images, seasons } = this.props.video;
     return (
-      <div
-        className="anime-item flex m-5 p-2 border-2 shadow-2xl rounded-xl"
-        style={{ background: "#170019", borderColor: "#26002b" }}
-      >
-        <Poster images={images}></Poster>
-        <div className="anime-item-content w-full">
-          <Title name={name} alias={alias}></Title>
-          <Seasons></Seasons>
+      <div className="flex m-5 p-2 border-2 shadow-2xl rounded-xl bg-anime-sec border-anime-ter">
+        <Poster
+          images={images}
+          videoId={id}
+          deletePoster={this.props.deleteAnimePoster}
+          addPoster={this.props.addAnimePoster}
+        ></Poster>
+        <div className="w-full">
+          <Title name={name} alias={alias} year={year}></Title>
+          <Seasons seasons={seasons}></Seasons>
         </div>
-        <Info></Info>
+        <Info status={status}></Info>
       </div>
     );
   }
 }
 
-export default AnimeItem;
+export default connect(null, { addAnimePoster, deleteAnimePoster })(AnimeItem);

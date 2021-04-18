@@ -1,10 +1,27 @@
 import React, { Component } from "react";
 import { NavLink, withRouter } from "react-router-dom";
+import { getThemeForUrl } from "../../util/colors";
 
 export class Header extends Component {
   state = {
     showDropDown: false,
     bg: "bg-gray-800",
+    border: "border-gray-700",
+    url: "",
+    theme: {},
+  };
+
+  updateBg = () => {
+    const newUrl = window.location.href;
+    if (this.state.url === newUrl) return;
+    const theme = getThemeForUrl(newUrl);
+    const newState = {
+      theme,
+      bg: "bg-" + theme.prim,
+      border: "border-" + theme.ter,
+      url: newUrl,
+    };
+    this.setState(newState);
   };
 
   showDropDown = (e) => {
@@ -15,9 +32,20 @@ export class Header extends Component {
     this.setState({ showDropDown: false });
   };
 
+  componentDidMount() {
+    this.updateBg();
+  }
+
+  componentDidUpdate() {
+    this.updateBg();
+  }
+
   render() {
     return (
-      <nav className="text-gray-200 shadow-md bg-gray-800" id="site-header">
+      <nav
+        className={`text-gray-200 shadow-md ${this.state.bg}`}
+        id="site-header"
+      >
         <ul className="flex p-2 items-center text-lg">
           <li className="font-bold m-2">
             <NavLink to="/">:Kevolehc:</NavLink>
@@ -46,7 +74,7 @@ export class Header extends Component {
               id="drop-down"
               className={`${this.state.showDropDown ? "" : "hidden"} ${
                 this.state.bg
-              } border border-gray-700 shadow-md`}
+              } border ${this.state.border} shadow-md z-10`}
             >
               <ul>
                 <li className="p-2">
