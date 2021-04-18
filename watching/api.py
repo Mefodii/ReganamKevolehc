@@ -15,8 +15,7 @@ class VideoList(generics.ListAPIView):
     serializer_class = VideoRecursiveSerializer
 
     def get_queryset(self):
-        video_type = self.kwargs.get("video_type", None)
-        print(video_type)
+        video_type = self.request.query_params.get("videoType", None)
         return Video.objects.filter_by_type(video_type)
 
 

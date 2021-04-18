@@ -10,7 +10,6 @@ router.register("api/seasons", SeasonViewSet, "seasons")
 router.register("api/images", ImageModelViewSet, "images")
 
 urlpatterns = [
-    path("api/video_type/<video_type>/", VideoList.as_view()),
     path("api/video_type/", VideoList.as_view()),
     path("api/info/", get_info),
 ]
