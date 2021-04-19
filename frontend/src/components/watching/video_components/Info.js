@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 export class Info extends Component {
+  static propTypes = {
+    statusTypes: PropTypes.array.isRequired,
+    status: PropTypes.string.isRequired,
+    updateStatus: PropTypes.func.isRequired,
+  };
+
   render() {
     return (
       <div>

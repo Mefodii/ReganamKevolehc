@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class Title extends Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    alias: PropTypes.string.isRequired,
+  };
+
   render() {
     const { name, alias } = this.props;
     return (

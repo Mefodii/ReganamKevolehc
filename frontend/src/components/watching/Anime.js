@@ -15,12 +15,12 @@ export class Anime extends Component {
     this.props.getAnime();
   }
 
+  renderItems = () =>
+    this.props.anime.map((video) => (
+      <AnimeItem video={video} key={video.id}></AnimeItem>
+    ));
+
   render() {
-    const animeItems = this.props.anime.length
-      ? this.props.anime.map((video) => {
-          return <AnimeItem video={video} key={video.id}></AnimeItem>;
-        })
-      : null;
     return (
       <Fragment>
         <div className="text-gray-100 w-full flex flex-col items-center">
@@ -28,7 +28,7 @@ export class Anime extends Component {
             Welcome to Anime, fellow watcher
           </h2>
           <div className="rounded-xl shadow-lg w-10/12 bg-anime-prim">
-            {animeItems}
+            {this.renderItems()}
           </div>
         </div>
       </Fragment>

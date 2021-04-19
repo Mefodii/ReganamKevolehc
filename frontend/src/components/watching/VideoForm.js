@@ -13,6 +13,8 @@ export class VideoForm extends Component {
   };
 
   static propTypes = {
+    videoTypes: PropTypes.object.isRequired,
+    statusTypes: PropTypes.array.isRequired,
     addAnime: PropTypes.func.isRequired,
     addMovie: PropTypes.func.isRequired,
     addSerial: PropTypes.func.isRequired,

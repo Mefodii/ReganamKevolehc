@@ -7,10 +7,14 @@ import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 import { addAnimePoster, deleteAnimePoster } from "../../actions/posters";
+import { updateAnime } from "../../actions/videos";
 
 export class AnimeItem extends Component {
   static propTypes = {
     video: PropTypes.object.isRequired,
+    updateAnime: PropTypes.func.isRequired,
+    addAnimePoster: PropTypes.func.isRequired,
+    deleteAnimePoster: PropTypes.func.isRequired,
   };
 
   state = {
@@ -21,6 +25,14 @@ export class AnimeItem extends Component {
     year: "",
     images: [],
     seasons: [],
+  };
+
+  updateStatus = (newStatus) => {
+    // TODO
+  };
+
+  updateAnime = (updatedVideo) => {
+    this.props.updateAnime(this.props.video, updatedVideo);
   };
 
   render() {
@@ -35,12 +47,14 @@ export class AnimeItem extends Component {
         ></Poster>
         <div className="w-full">
           <Title name={name} alias={alias} year={year}></Title>
-          <Seasons seasons={seasons}></Seasons>
+          <Seasons seasons={seasons} videoId={id}></Seasons>
         </div>
-        <Info status={status}></Info>
+        <Info status={status} updateStatus={this.updateStatus}></Info>
       </div>
     );
   }
 }
 
-export default connect(null, { addAnimePoster, deleteAnimePoster })(AnimeItem);
+const mapDispatchToProps = { addAnimePoster, deleteAnimePoster, updateAnime };
+
+export default connect(null, mapDispatchToProps)(AnimeItem);

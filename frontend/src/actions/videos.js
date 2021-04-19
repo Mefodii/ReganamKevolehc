@@ -90,6 +90,16 @@ export const addSerial = (video) => (dispatch) => {
   defaultPost(API_CRUD_VIDEO, actionType, video)(dispatch);
 };
 
+// UPDATEs
+export const updateAnime = (oldVideo, newVideo) => (dispatch) => {
+  const video = {
+    ...oldVideo,
+    ...newVideo,
+  };
+  // const actionType = buildTypes(ADD_VIDEO, ADD_SERIAL);
+  // defaultPost(API_CRUD_VIDEO, actionType, video)(dispatch);
+};
+
 // DELETEs
 export const deleteAnime = (id) => (dispatch) => {
   const url = `${API_CRUD_VIDEO}${id}/`;
